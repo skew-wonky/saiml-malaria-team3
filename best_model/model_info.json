@@ -1,0 +1,13 @@
+{
+  "model_name": "baseline_cnn",
+  "accuracy": 0.9908,
+  "precision": 0.9938,
+  "recall": 0.9877,
+  "f1-score": 0.9907,
+  "version": 1.0,
+  "image_size": [
+    128,
+    128
+  ],
+  "saved_at": "2026-07-18T03:39:23.074846"
+}

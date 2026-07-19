@@ -1,0 +1,41 @@
+# Python byte-compiled / optimized / DLL files
+__pycache__/
+*$py.class
+
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Streamlit
+.streamlit/
+
+# MLflow local tracking outputs and DB
+mlruns/*
+mlflow.db
+.trash
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Project local artifacts / temporary files
+*.csv
+report.md
+temp_*.png
+temp_*.jpg
+
+# training data
+training/data
+training/keras_tuner_dir
+training/models

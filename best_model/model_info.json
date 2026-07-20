@@ -1,9 +1,9 @@
 {
   "model_name": "baseline_cnn",
-  "accuracy": 0.9908,
+  "accuracy": 0.9896,
   "precision": 0.9938,
-  "recall": 0.9877,
-  "f1-score": 0.9907,
+  "recall": 0.9854,
+  "f1-score": 0.9896,
   "version": 1.0,
   "image_size": [
     128,

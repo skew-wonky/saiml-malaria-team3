@@ -2,11 +2,6 @@
 __pycache__/
 *$py.class
 
-
-# Jupyter Notebook
-.ipynb_checkpoints
-*/.ipynb_checkpoints/
-
 # Environments
 .env
 .venv
@@ -35,7 +30,16 @@ report.md
 temp_*.png
 temp_*.jpg
 
-# training data
+# model training
+#   Jupyter Notebook
+*.ipynb
+.ipynb_checkpoints
+*/.ipynb_checkpoints/
+
+#   training data
 training/data
 training/keras_tuner_dir
-training/models
+training/*.ipynb
+training/src
+models
+results

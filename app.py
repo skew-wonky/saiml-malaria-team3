@@ -796,13 +796,6 @@ def main():
             C -->|VLM| E[GPT-4 Vision]
             D --> F[Output]
             E --> F
-            
-            style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-            style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-            style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-            style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-            style E fill:#fce4ec,stroke:#c2185b,stroke-width:2px
-            style F fill:#fff8e1,stroke:#fbc02d,stroke-width:2px
         </div>
         <script>
             setTimeout(function() {{

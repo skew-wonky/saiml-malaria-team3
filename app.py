@@ -785,13 +785,26 @@ def main():
             style F fill:#fff8e1,stroke:#fbc02d,stroke-width:2px
         </div>
         """
-        
+
         st.components.v1.html(f"""
         <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-        {mermaid_diagram}
-        <script>mermaid.initialize({{startOnLoad:true}});</script>
+        <div class="mermaid">
+        flowchart LR
+            A[Input Image] --> B[Best DL Model]
+            B --> C{{Analysis Mode}}
+            C -->|LLM| D[Generate Report]
+            C -->|VLM| E[GPT-4 Vision]
+            D --> F[Output]
+            E --> F
+        </div>
+        <script>
+            setTimeout(function() {{
+                mermaid.initialize({{ startOnLoad: true }});
+            mermaid.run();
+            }}, 500);
+        </script>
         """, height=300)
-    
+
     # Footer
     st.markdown("---")
     st.markdown("""

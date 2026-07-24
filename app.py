@@ -766,45 +766,37 @@ def main():
         # System Architecture
         st.subheader("🏗️ System Architecture")
         
-        # Render Mermaid diagram using HTML component
-        mermaid_diagram = """
-        <div class="mermaid">
-        flowchart LR
-            A[Input Image<br/>128x128] --> B[Best DL Model<br/>Keras/TensorFlow]
-            B --> C{Analysis Mode}
-            C -->|LLM| D[Generate Report<br/>Classification + Insights]
-            C -->|VLM| E[GPT-4 Vision<br/>Infection Staging]
-            D --> F[Output:<br/>Classification + Confidence<br/>Insights + Recommendations]
-            E --> F
-            
-            style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-            style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-            style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-            style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-            style E fill:#fce4ec,stroke:#c2185b,stroke-width:2px
-            style F fill:#fff8e1,stroke:#fbc02d,stroke-width:2px
-        </div>
-        """
-        
-        st.components.v1.html(f"""
-        <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-        {mermaid_diagram}
-        <script>
-            function renderMermaid() {{
-                if (typeof mermaid === 'undefined' || !mermaid.initialize) {{
-                    setTimeout(renderMermaid, 100);
-                    return;
-                }}
-                mermaid.initialize({{startOnLoad: false}});
-                mermaid.run();
-            }}
-            if (document.readyState === 'loading') {{
-                document.addEventListener('DOMContentLoaded', renderMermaid);
-            }} else {{
-                renderMermaid();
-            }}
-        </script>
-        """, height=300)
+        # Mermaid diagram definition
+        mermaid_graph = """flowchart LR
+    A[Input Image<br/>128x128] --> B[Best DL Model<br/>Keras/TensorFlow]
+    B --> C{Analysis Mode}
+    C -->|LLM| D[Generate Report<br/>Classification + Insights]
+    C -->|VLM| E[GPT-4 Vision<br/>Infection Staging]
+    D --> F[Output:<br/>Classification + Confidence<br/>Insights + Recommendations]
+    E --> F
+
+    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+    style E fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    style F fill:#fff8e1,stroke:#fbc02d,stroke-width:2px"""
+
+        # Render mermaid diagram as an SVG image via mermaid.ink service.
+        # This is stateless (no JavaScript) so it renders reliably on every
+        # page load and refresh, unlike client-side mermaid.js rendering
+        # inside Streamlit's st.components.v1.html iframe.
+        mermaid_img_url = "https://mermaid.ink/svg/" + base64.urlsafe_b64encode(
+            mermaid_graph.encode("utf-8")
+        ).decode("utf-8")
+
+        st.markdown(
+            f'<div style="text-align:center;">'
+            f'<img src="{mermaid_img_url}" alt="System Architecture Diagram" '
+            f'style="max-width:100%;height:auto;" />'
+            f'</div>',
+            unsafe_allow_html=True
+        )
 
     # Footer
     st.markdown("---")

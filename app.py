@@ -785,23 +785,24 @@ def main():
             style F fill:#fff8e1,stroke:#fbc02d,stroke-width:2px
         </div>
         """
-
+        
         st.components.v1.html(f"""
         <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-        <div class="mermaid">
-        flowchart LR
-            A[Input Image] --> B[Best DL Model]
-            B --> C{{Analysis Mode}}
-            C -->|LLM| D[Generate Report]
-            C -->|VLM| E[GPT-4 Vision]
-            D --> F[Output]
-            E --> F
-        </div>
+        {mermaid_diagram}
         <script>
-            setTimeout(function() {{
-                mermaid.initialize({{ startOnLoad: true }});
-            mermaid.run();
-            }}, 500);
+            function renderMermaid() {{
+                if (typeof mermaid === 'undefined' || !mermaid.initialize) {{
+                    setTimeout(renderMermaid, 100);
+                    return;
+                }}
+                mermaid.initialize({{startOnLoad: false}});
+                mermaid.run();
+            }}
+            if (document.readyState === 'loading') {{
+                document.addEventListener('DOMContentLoaded', renderMermaid);
+            }} else {{
+                renderMermaid();
+            }}
         </script>
         """, height=300)
 

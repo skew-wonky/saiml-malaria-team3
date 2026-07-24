@@ -768,7 +768,7 @@ def main():
         
         # Render Mermaid diagram using HTML component
         mermaid_diagram = """
-        #<div class="mermaid">
+        <div class="mermaid">
         flowchart LR
             A[Input Image<br/>128x128] --> B[Best DL Model<br/>Keras/TensorFlow]
             B --> C{Analysis Mode}
@@ -783,13 +783,13 @@ def main():
             style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
             style E fill:#fce4ec,stroke:#c2185b,stroke-width:2px
             style F fill:#fff8e1,stroke:#fbc02d,stroke-width:2px
-        #</div>
+        </div>
         """
         
         st.components.v1.html(f"""
-        #<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
         {mermaid_diagram}
-        #<script>mermaid.initialize({{startOnLoad:true}});</script>
+        <script>mermaid.initialize({{startOnLoad:true}});</script>
         """, height=300)
     
     # Footer
